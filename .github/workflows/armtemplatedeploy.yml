@@ -3,6 +3,9 @@
 name: armTemplateDeployment
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -15,3 +18,8 @@ jobs:
         uses: Azure/login@v2.3.0
         with:
           creds: ${{secrets.AZURE_SP_GITHUBACTIONS_CRED}}
+      - name: Deploy Group with AZ CLI
+        uses: Azure/cli@v2.1.0
+        with:
+          inlinescript: 
+            az deployment sub create --location "UK South" --template-file ./arm-templates/resourcegroup.json

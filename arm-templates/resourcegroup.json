@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+             "metadata": {
+                 "description": "enter the locartion to deploy the resource to"
+             },
+             "defaultValue": "UK South"
+        },
+        "ResourceGroupName": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter the name for the resource group"
+            },
+            "defaultValue": "rg-st-test-arm-github-001"
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+      {
+        "name": "[parameters('ResourceGroupName')]",
+        "type": "Microsoft.Resources/resourceGroups",
+        "apiVersion": "2024-08-01",
+        "location": "[parameters('location')]",
+        "dependsOn": [],
+        "tags": {}
+      }
+    ],
+    "outputs": {}
+}
